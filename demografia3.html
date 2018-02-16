@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang ="pt-br">
+	<head>
+	<meta charset ="utf-8"/>
+	<title>SITE IRLANDA</title>
+	
+	<link rel="stylesheet" type="text/css" href="css/estilo.css">
+	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="slidebox/jquery.easing.1.3.js"></script>
+	<script type="text/javascript">
+$(document).ready(function() {
+	var autoPlayTime=7000;
+	autoPlayTimer = setInterval( autoPlay, autoPlayTime);
+	function autoPlay(){
+		Slidebox('next');
+	}
+	$('#slidebox .next').click(function () {
+		Slidebox('next','stop');
+	});
+	$('#slidebox .previous').click(function () {
+		Slidebox('previous','stop');
+	});
+	var yPosition=($('#slidebox').height()-$('#slidebox .next').height())/2;
+	$('#slidebox .next').css('top',yPosition);
+	$('#slidebox .previous').css('top',yPosition);
+	$('#slidebox .thumbs a:first-child').removeClass('thumb').addClass('selected_thumb');
+	$("#slidebox .content").each(function(i){
+		slideboxTotalContent=i*$('#slidebox').width();	
+		$('#slidebox .container').css("width",slideboxTotalContent+$('#slidebox').width());
+	});
+});
+
+function Slidebox(slideTo,autoPlay){
+    var animSpeed=1000; //animation speed
+    var easeType='easeInOutExpo'; //easing type
+	var sliderWidth=$('#slidebox').width();
+	var leftPosition=$('#slidebox .container').css("left").replace("px", "");
+	if( !$("#slidebox .container").is(":animated")){
+		if(slideTo=='next'){ //next
+			if(autoPlay=='stop'){
+				clearInterval(autoPlayTimer);
+			}
+			if(leftPosition==-slideboxTotalContent){
+				$('#slidebox .container').animate({left: 0}, animSpeed, easeType); //reset
+				$('#slidebox .thumbs a:first-child').removeClass('thumb').addClass('selected_thumb');
+				$('#slidebox .thumbs a:last-child').removeClass('selected_thumb').addClass('thumb');
+			} else {
+				$('#slidebox .container').animate({left: '-='+sliderWidth}, animSpeed, easeType); //next
+				$('#slidebox .thumbs .selected_thumb').next().removeClass('thumb').addClass('selected_thumb');
+				$('#slidebox .thumbs .selected_thumb').prev().removeClass('selected_thumb').addClass('thumb');
+			}
+		} else if(slideTo=='previous'){ //previous
+			if(autoPlay=='stop'){
+				clearInterval(autoPlayTimer);
+			}
+			if(leftPosition=='0'){
+				$('#slidebox .container').animate({left: '-'+slideboxTotalContent}, animSpeed, easeType); //reset
+				$('#slidebox .thumbs a:last-child').removeClass('thumb').addClass('selected_thumb');
+				$('#slidebox .thumbs a:first-child').removeClass('selected_thumb').addClass('thumb');
+			} else {
+				$('#slidebox .container').animate({left: '+='+sliderWidth}, animSpeed, easeType); //previous
+				$('#slidebox .thumbs .selected_thumb').prev().removeClass('thumb').addClass('selected_thumb');
+				$('#slidebox .thumbs .selected_thumb').next().removeClass('selected_thumb').addClass('thumb');
+			}
+		} else {
+			var slide2=(slideTo-1)*sliderWidth;
+			if(leftPosition!=-slide2){
+				clearInterval(autoPlayTimer);
+				$('#slidebox .container').animate({left: -slide2}, animSpeed, easeType); //go to number
+				$('#slidebox .thumbs .selected_thumb').removeClass('selected_thumb').addClass('thumb');
+				var selThumb=$('#slidebox .thumbs a').eq((slideTo-1));
+				selThumb.removeClass('thumb').addClass('selected_thumb');
+			}
+		}
+	}
+}
+</script>
+	
+	
+	
+	
+	</head>
+	
+	<body style="margin-top:0; background-repeat:no-repeat; background-color:#006634; ">	
+
+	<header> 
+	<h1 class="tituloTopo">Descobrindo a Irlanda</h1>
+	
+	
+	<div id="slidebox">
+
+		<div class="next"></div>
+		<div class="previous"></div>
+		<div class="thumbs">
+		<a href="#" onClick="Slidebox('1');return false" class="thumb">1</a> 
+		<a href="#" onClick="Slidebox('2');return false" class="thumb">2</a> 
+		<a href="#" onClick="Slidebox('3');return false" class="thumb">3</a> 
+		<a href="#" onClick="Slidebox('4');return false" class="thumb">4</a>
+		<a href="#" onClick="Slidebox('5');return false" class="thumb">5</a>
+		</div>
+	
+	
+	<div class="container" style="height:100px;">
+    	<div class="content">
+        	<img src="slidebox/imagem06.jpg" width="950" height="354" alt="irlanda01" />
+        </div>
+        <div class="content">
+        	<img src="slidebox/imagem09.jpg" width="950" height="354" alt="irlanda01"/>
+        </div>
+        <div class="content">
+        	<img src="slidebox/imagem02.jpg" width="950" height="354" alt="irlanda01"/>
+        </div>
+        <div class="content">
+        	<img src="slidebox/imagem01.jpg" width="950" height="354" alt="irlanda01"/>
+        </div>
+		<div class="content">
+        	<img src="slidebox/imagem04.jpg" width="950" height="354" alt="irlanda01"/>
+        </div>
+		
+	</div>	
+	
+	
+	</div>
+
+	</header>
+	
+	<div id="containerConteudo">
+	
+	<nav id ="menu1">
+	
+	<ul>
+		
+		<li><a href="index.html">HOME</a>
+		
+		<li><a href="#" onclick='return false'>Sobre a Irlanda</a>
+			<ul>
+				<li><a href ="historia.html">HISTÓRIA</a></li>
+				<li><a href ="geografia.html">GEOGRAFIA</a></li>
+				<li><a href ="demografia.html">DEMOGRAFIA</a></li>
+				<li><a href ="politica.html">POLÍTICA</a></li>
+				<li><a href ="subdivisoes.html">SUBDIVISÕES</a></li>
+				<li><a href ="economia.html">ECÔNOMIA</a></li>
+				<li><a href ="infraestrutura.html">INFRAESTRUTURA</a></li>
+				<li><a href ="cultura.html">CULTURA</a></li>		
+			</ul>
+		</li>
+
+		<li><a href="#" onclick='return false'>Turismo</a>
+			<ul>	
+				<li><a href ="pacoteTuristico.html">PACOTE TURISTICO</a></li>
+				<li><a href ="http://www.hostelworld.com/" TARGET="_blank">HOTEIS</a></li>
+			</ul>
+		</li>
+	
+		<li><a href="#" onclick='return false'>Intercâmbio</a>
+			<ul>
+				<li><a href ="agenciaIntercambio.html">AGÊNCIAS DE INTERCÂMBIO</a></li>
+			</ul>
+		</li>
+		
+		<li><a href="#" onclick='return false'>Entretenimento</a>
+			<ul>
+				<li><a href ="videos.html">VIDEOS</a></li>
+				<li><a href ="fotos.html" TARGET="_blank">FOTOS</a></li>
+			</ul>
+		</li>
+		
+		<li><a href="#" onclick='return false'>Curiosidades</a>
+			<ul>
+				<li><a href ="voceSabia.html">VOCÊ SABIA?</a></li>
+			</ul>
+		</li>
+		
+		<li><a href="#" onclick='return false'>Conexões externas</a>
+			<ul>
+				<li><a href ="http://www.gov.ie/" TARGET="_blank">PORTAL DO GOVERNO IRLANDÊS</a></li>
+				<li><a href ="http://www.rte.ie/" TARGET="_blank">RÁDIO E TV DA IRLANDA</a></li>
+			</ul>
+		</li>
+	
+			
+	</ul>
+
+	</nav>
+	
+	<div id="quadro02">
+		<section id="menufull">
+	
+				<nav id="menu">
+					<ul> 
+						<li><a href ="top10.html">TOP 10 </a> </li>
+						<li><a href ="achadoEmDublin.html"> Achado em Dublin </a> </li>
+						<li><a href ="baladasEmDublin.html"> Baladas em Dublin </a> </li>
+						<li><a href ="SeVirandoEmDublin.html"> Se virando em Dublin </a> </li>
+					</ul>
+				</nav>
+		</section>
+	</div>
+	
+
+
+	<div id="quadro01">
+		<h2 id="texto01">DEMOGRAFIA</h2>
+		<br/>
+		
+		<h3 id="texto02"><br/>Religião</h3>
+		<img class="centralizar" src="imagem/demografia5.jpg" alt="religiao" height="140" width="220"><br/>
+		<br/><br/>
+		<p>Na República da Irlanda, 86,8% da população é Católica, religião introduzida por São Patrício, mas tem havido um enorme declínio na participação em serviços religiosos. Entre 1996 e 2001, a presença regular na missa, já em declínio anteriormente, havia diminuído de 60% para 48% (em 1973 excedeu os 90%), existindo apenas dois seminários em todo o país.37 A imagem da Igreja também foi danificada na década de 1990 por causa de uma série de escândalos sexuais e encobrimentos dentro da própria hierarquia. Em 1995, na sequência de um embargo de cerca de 60 anos, os eleitores escolheram voltar a legalizar o divórcio na República. Mesmo assim, o número de praticantes é superior à média europeia. A religião católica na Irlanda é também um símbolo de identificação nacional.</p>
+		<p>A segunda igreja cristã com maior número de praticantes, é a Igreja da Irlanda, que, depois de experimentar uma queda durante a maior parte do século XX, tem vindo a crescer o seu número de participantes, de acordo com o censo de 2002, como já tem acontecido com outras religiões cristãs e islâmicas. Comunidades judaica viviam na Irlanda, durante a Idade Média, e uma comunidade de sefarditas fixou-se em Dublin, em 1660.</p>
+		<p>De acordo com o censo de 2006, o número de pessoas que afirmaram não pertencer a nenhuma religião foi de 186.318 (4,4%). Adicionalmente, 1515 pessoas declararam ser agnósticas e 929 ateus. Portanto, o total não-religioso é de 4,5% da população. O resto da população, ou 70.322 (1,7%), não declarou nenhuma religião.</p>
+
+		
+		<div id="botaonext"><a href="demografia2.html">&lt;&lt;PREVIOUS</a></div>
+	</div>
+	
+	
+	<footer id="rodape">
+			<p>
+						<a href="http://jigsaw.w3.org/css-validator/check/referer">
+						<img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS!" />
+						</a>
+						
+						<p> Site criado por: <br>Lígia Hinniger - TIA: 41317564 <br>Salomão Ferreira - TIA: 41324374.
+							<br>Obrigado!</p>			
+						
+	</footer>
+	
+	</div>
+	</body>
+</html>

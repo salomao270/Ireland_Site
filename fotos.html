@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Photo Albums</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Author" content="httphotos">
+<style type="text/css">
+	body {
+		background-color: green;
+		font-family: arial, helvetica, sans-serif
+		font-size: larger;
+	}
+	h1, h2 {
+		border: orange 2px solid;
+		border-left: 1px none;
+		border-right: 1px none;
+		border-top: 1px none;
+		margin-bottom: 1em;
+		margin-left: -10px;
+		margin-right: 0px;
+		padding: 20px;
+		width: 98%;
+		display: block;
+		color:  rgb(255,255,255);
+		font-size: 18px;
+		font-weight: bold;
+		letter-spacing: 4px;
+		text-align: right;
+		height: 21px;
+		position: relative;
+	}
+	h2:first-letter {
+		color: orange;
+		font-weight: bold;
+		font-size: 24pt;
+	}
+
+#pixlinks {
+	width: 650px;
+	list-style: none;
+	margin: auto;
+	padding: 0px;
+}
+
+#pixlinks li {
+	display: block;
+	float: left;
+	margin: 2px;
+	padding: 0px;
+	background-color: rgb(90,90,90);
+	height: 126px;
+}
+
+#pixlinks li a {
+	color: rgb(255,255,255);
+	font-size: 18px;
+	text-decoration: none;
+	display: block;
+	float: left;
+	width: 320px;
+	height: 126px;
+	margin: 0;
+	padding: 0px;
+}
+
+#pixlinks li a img {
+	display: block;
+	float: left;
+	border: 3px rgb(90,90,90) solid;
+	margin: 0px 10px 0 0;
+}
+
+#pixlinks li a span {
+	font-size: 14px;
+	display: block;
+	margin-top: -2px;
+}
+
+#pixlinks li a:hover, #pixlinks li a.active {
+	color: white;
+	background-color: orange;
+	text-decoration: none;
+}
+
+#pixlinks li a:hover img, #pixlinks li a.active img{
+	border-color: orange;
+}
+
+
+	#httphotos {
+		position: absolute;
+		right: 0px;
+		bottom: 20px;
+		margin: 0px;
+		padding: 0px;
+	}
+
+	#httphotos img {
+		border: 0px;
+	}
+</style>
+</head>
+<body>
+<h2>Galeria de Fotos</h2>
+<p></p>
+<ul id="pixlinks">
+<li><a href="galeria/fotos2.html"><img src="galeria/thumb00.jpg" alt="">Galeria de fotos<span>21 photos</span></a></li>
+<li></li>
+
+</ul>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang ="pt-br">
+	<head>
+	<meta charset ="utf-8"/>
+	<title>SITE IRLANDA</title>
+	
+	<link rel="stylesheet" type="text/css" href="css/estilo.css">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="slidebox/jquery.easing.1.3.js"></script>
+	<script type="text/javascript">
+$(document).ready(function() {
+	var autoPlayTime=7000;
+	autoPlayTimer = setInterval( autoPlay, autoPlayTime);
+	function autoPlay(){
+		Slidebox('next');
+	}
+	$('#slidebox .next').click(function () {
+		Slidebox('next','stop');
+	});
+	$('#slidebox .previous').click(function () {
+		Slidebox('previous','stop');
+	});
+	var yPosition=($('#slidebox').height()-$('#slidebox .next').height())/2;
+	$('#slidebox .next').css('top',yPosition);
+	$('#slidebox .previous').css('top',yPosition);
+	$('#slidebox .thumbs a:first-child').removeClass('thumb').addClass('selected_thumb');
+	$("#slidebox .content").each(function(i){
+		slideboxTotalContent=i*$('#slidebox').width();	
+		$('#slidebox .container').css("width",slideboxTotalContent+$('#slidebox').width());
+	});
+});
+
+function Slidebox(slideTo,autoPlay){
+    var animSpeed=1000; //animation speed
+    var easeType='easeInOutExpo'; //easing type
+	var sliderWidth=$('#slidebox').width();
+	var leftPosition=$('#slidebox .container').css("left").replace("px", "");
+	if( !$("#slidebox .container").is(":animated")){
+		if(slideTo=='next'){ //next
+			if(autoPlay=='stop'){
+				clearInterval(autoPlayTimer);
+			}
+			if(leftPosition==-slideboxTotalContent){
+				$('#slidebox .container').animate({left: 0}, animSpeed, easeType); //reset
+				$('#slidebox .thumbs a:first-child').removeClass('thumb').addClass('selected_thumb');
+				$('#slidebox .thumbs a:last-child').removeClass('selected_thumb').addClass('thumb');
+			} else {
+				$('#slidebox .container').animate({left: '-='+sliderWidth}, animSpeed, easeType); //next
+				$('#slidebox .thumbs .selected_thumb').next().removeClass('thumb').addClass('selected_thumb');
+				$('#slidebox .thumbs .selected_thumb').prev().removeClass('selected_thumb').addClass('thumb');
+			}
+		} else if(slideTo=='previous'){ //previous
+			if(autoPlay=='stop'){
+				clearInterval(autoPlayTimer);
+			}
+			if(leftPosition=='0'){
+				$('#slidebox .container').animate({left: '-'+slideboxTotalContent}, animSpeed, easeType); //reset
+				$('#slidebox .thumbs a:last-child').removeClass('thumb').addClass('selected_thumb');
+				$('#slidebox .thumbs a:first-child').removeClass('selected_thumb').addClass('thumb');
+			} else {
+				$('#slidebox .container').animate({left: '+='+sliderWidth}, animSpeed, easeType); //previous
+				$('#slidebox .thumbs .selected_thumb').prev().removeClass('thumb').addClass('selected_thumb');
+				$('#slidebox .thumbs .selected_thumb').next().removeClass('selected_thumb').addClass('thumb');
+			}
+		} else {
+			var slide2=(slideTo-1)*sliderWidth;
+			if(leftPosition!=-slide2){
+				clearInterval(autoPlayTimer);
+				$('#slidebox .container').animate({left: -slide2}, animSpeed, easeType); //go to number
+				$('#slidebox .thumbs .selected_thumb').removeClass('selected_thumb').addClass('thumb');
+				var selThumb=$('#slidebox .thumbs a').eq((slideTo-1));
+				selThumb.removeClass('thumb').addClass('selected_thumb');
+			}
+		}
+	}
+}
+</script>
+	
+	
+	
+	
+	</head>
+	<body style="margin-top:0; background-repeat:no-repeat; background-color:#006634; ">		
+	
+	<header> 
+	<h1 class="tituloTopo">Descobrindo a Irlanda</h1>
+	
+	
+	<div id="slidebox">
+
+		<div class="next"></div>
+		<div class="previous"></div>
+		<div class="thumbs">
+		<a href="#" onClick="Slidebox('1');return false" class="thumb">1</a> 
+		<a href="#" onClick="Slidebox('2');return false" class="thumb">2</a> 
+		<a href="#" onClick="Slidebox('3');return false" class="thumb">3</a> 
+		<a href="#" onClick="Slidebox('4');return false" class="thumb">4</a>
+		<a href="#" onClick="Slidebox('5');return false" class="thumb">5</a>
+		</div>
+	
+	
+	<div class="container" style="height:100px;">
+    	<div class="content">
+        	<img src="slidebox/imagem06.jpg" width="950" height="354" alt="irlanda01" />
+        </div>
+        <div class="content">
+        	<img src="slidebox/imagem09.jpg" width="950" height="354" alt="irlanda01"/>
+        </div>
+        <div class="content">
+        	<img src="slidebox/imagem02.jpg" width="950" height="354" alt="irlanda01"/>
+        </div>
+        <div class="content">
+        	<img src="slidebox/imagem01.jpg" width="950" height="354" alt="irlanda01"/>
+        </div>
+		<div class="content">
+        	<img src="slidebox/imagem04.jpg" width="950" height="354" alt="irlanda01"/>
+        </div>
+		
+	</div>	
+	
+	
+	</div>
+
+	</header>
+	
+	<div id="containerConteudo">
+	
+	<nav id ="menu1">
+	
+	<ul>
+		
+		<li><a href="index.html">HOME</a>
+		
+		<li><a href="#" onclick='return false'>Sobre a Irlanda</a>
+			<ul>
+				<li><a href ="historia.html">HISTÓRIA</a></li>
+				<li><a href ="geografia.html">GEOGRAFIA</a></li>
+				<li><a href ="demografia.html">DEMOGRAFIA</a></li>
+				<li><a href ="politica.html">POLÍTICA</a></li>
+				<li><a href ="subdivisoes.html">SUBDIVISÕES</a></li>
+				<li><a href ="economia.html">ECÔNOMIA</a></li>
+				<li><a href ="infraestrutura.html">INFRAESTRUTURA</a></li>
+				<li><a href ="cultura.html">CULTURA</a></li>		
+			</ul>
+		</li>
+
+		<li><a href="#" onclick='return false'>Turismo</a>
+			<ul>	
+				<li><a href ="pacoteTuristico.html">PACOTE TURISTICO</a></li>
+				<li><a href ="http://www.hostelworld.com/" TARGET="_blank">HOTEIS</a></li>
+			</ul>
+		</li>
+	
+		<li><a href="#" onclick='return false'>Intercâmbio</a>
+			<ul>
+				<li><a href ="agenciaIntercambio.html">AGÊNCIAS DE INTERCÂMBIO</a></li>
+			</ul>
+		</li>
+		
+		<li><a href="#" onclick='return false'>Entretenimento</a>
+			<ul>
+				<li><a href ="videos.html">VIDEOS</a></li>
+				<li><a href ="fotos.html" TARGET="_blank">FOTOS</a></li>
+			</ul>
+		</li>
+		
+		<li><a href="#" onclick='return false'>Curiosidades</a>
+			<ul>
+				<li><a href ="voceSabia.html">VOCÊ SABIA?</a></li>
+			</ul>
+		</li>
+		
+		<li><a href="#" onclick='return false'>Conexões externas</a>
+			<ul>
+				<li><a href ="http://www.gov.ie/" TARGET="_blank">PORTAL DO GOVERNO IRLANDÊS</a></li>
+				<li><a href ="http://www.rte.ie/" TARGET="_blank">RÁDIO E TV DA IRLANDA</a></li>
+			</ul>
+		</li>
+	
+			
+	</ul>
+
+	</nav>
+	
+	<div id="quadro02">
+		<section id="menufull">
+	
+				<nav id="menu">
+					<ul> 
+						<li><a href ="top10.html">TOP 10 </a> </li>
+						<li><a href ="achadoEmDublin.html"> Achado em Dublin </a> </li>
+						<li><a href ="baladasEmDublin.html"> Baladas em Dublin </a> </li>
+						<li><a href ="SeVirandoEmDublin.html"> Se virando em Dublin </a> </li>
+					</ul>
+				</nav>
+		</section>
+	</div>
+
+
+	<div id="quadro01">
+		<h2 id="texto01">HISTÓRIA DA IRLANDA</h2>
+		
+		<h3 id="texto02"><br/>Constituição de 1937</h3>
+		<br/><br/>
+		<p>Em 29 de dezembro de 1937, uma nova Constituição, a Constituição da República da Irlanda (em irlandês: Bunreacht na hÉireann), entrou em vigor. Ela substituiu a Constituição do Estado Livre Irlandês e criaram um novo estado chamado simplesmente "Éire", ou, no idioma inglês, "Ireland". O antigo Governo do Estado Livre tomou medidas para abolir formalmente o Gabinete de Governador-Geral, alguns meses antes da nova Constituição entrar em vigor.</p>
+		<p>Apesar da Constituição da Irlanda criar o cargo de Presidente da República da Irlanda, entre 1937 e 1949, a Irlanda não era tecnicamente uma república. Isto porque o principal papel possuído por um Chefe de Estado, que representa simbolicamente a Irlanda, permaneceu internacionalmente adquirido ao abrigo da lei ordinária do Rei da Irlanda como um órgão do Governo irlandês.</p>
+		<br/>
+		   <img class="centralizar" src="imagem/Historia04.jpg" alt="Revolucao" height="180" width="150"><br/>
+		   <p>O período de neutralidade irlandesa durante durante a Segunda Guerra Mundial, foi descrito como "A emergência". A posição do Rei da Irlanda cessou com a passagem do Ato de 1948 da República da Irlanda, que entrou em vigor em 18 de abril de 1949, quando o cargo de Presidente da Irlanda substituiu o do Rei da Irlanda. A lei declarou que o país poderia ser descrito como uma república. Mais tarde, o Ato da Coroa da Irlanda, na Irlanda, foi formalmente revogada pela Lei de Revisão do Estatuto (Estatuto da Pré-União Irlandesa) no Ato de 1962.</p>
+		   <p>A Irlanda manteve-se no Commonwealth após a independência e até à declaração de uma república em 18 de abril de 1949. Sob o regime da Commonwealth, na altura, uma declaração de uma república, rescindia automaticamente um Estado membro da Commonwealth. Por isso, a Irlanda deixou imediatamente de ser um membro e decidiu não se recandidatar posteriormente á adesão à Commonwealth, quando mais tarde esta mudou as suas regras para permitir que repúblicas pudessem aderir à Commonwealth.</p>
+           <p>A Irlanda aderiu às Nações Unidas em 1955 e à União Europeia em 1973. Os governos irlandeses vêm buscando a unificação pacífica das Irlandas e cooperaram com o governo britânico contra a violência entre os grupos parlamentaristas e os grupos norte-irlandês conhecidos como Troubles (Problemas). Um acordo de paz foi aprovado em 1998, conhecido como Acordo da Sexta-feira Santa ouAcordo de Belfast (Capital da Irlanda do Norte), tendo sido votado em ambas as Irlandas, sendo implantado atualmente.</p>
+	
+		
+		<div id="botaonext"><a href="historia3.html">&lt;&lt;PREVIOUS</a></div>
+	</div>
+	
+	<footer id="rodape">
+			<p>
+						<a href="http://jigsaw.w3.org/css-validator/check/referer">
+						<img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS!" />
+						</a>
+						
+						<p> Site criado por: <br>Lígia Hinniger - TIA: 41317564 <br>Salomão Ferreira - TIA: 41324374.
+							<br>Obrigado!</p>
+						
+	</footer>
+	
+	</div>
+	</body>
+</html>
+	
