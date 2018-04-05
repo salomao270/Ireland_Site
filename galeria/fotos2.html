@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Galeria de fotos</title>
+<meta charset ="utf-8"/>
+<meta name="Author" content="httphotos">
+<script type="text/javascript" src="fotos.js"></script>
+<style type="text/css">	
+	html {
+		height: 100%;
+		overflow: hidden;
+	}
+	#flashcontent {
+		position: absolute;
+		bottom: 0px;
+		left: 0px;
+		top: 30px;
+		right: 10px;
+		margin: 0px;
+		padding: 0px;
+	}
+	#httphotos {
+		position: absolute;
+		right: 0px;
+		bottom: 20px;
+		margin: 0px;
+		padding: 0px;
+	}
+
+	#httphotos img {
+		border: 0px;
+	}
+	a, a:link,a:visited,a:active { 
+		color: rgb(204, 204, 255); 
+		text-decoration: none; 
+	}
+	a:hover {
+        	color: rgb(255, 0, 0);
+	        text-decoration: none;
+	}
+	img {border: 0px;}
+	body {
+		height: 100%;
+  		font-family: Arial, sans-serif; font-size: larger;
+		margin: 0px;
+		padding: 0px;
+		background-color: #009900;
+		color: rgb(204, 204, 255);
+		background: rgb(0, 153, 0);
+	}
+</style>
+</head>
+<body>
+<div><a href="../fotos.html">Galeria de Fotos</a> &raquo; <a href="fotos2.html">Fotos</a></div>
+<div id="flashcontent">Este site requer FlashPlayer.<a href="http://www.macromedia.com/go/getflashplayer/">Adquira o Flash.</a> Caso você tenha o FlashPlayer instalado, <a href="index.html?detectflash=false">clique para vizualizar Galeria de Fotos!</a>.</div>
+<script type="text/javascript">
+	var fo = new SWFObject("simpleviewer.swf", "simpleviewer", "100%", "100%", "7", "#009900");
+	fo.addVariable("preloaderColor", "0xffffff");
+	fo.addVariable("xmlDataPath", "gallery.xml");	
+	
+	fo.write("flashcontent");	
+</script>	
+</body>
+</html>
