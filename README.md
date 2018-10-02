@@ -1,2 +1,2 @@
 # Site_Irlanda
-This was a website developed using only HTML, CSS and a basic JavaScript
+This webiste was developed using only HTML and CSS  and a basic JavaScript (JQuery importeed for slidebox and adapted for my banner animation)
