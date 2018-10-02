@@ -1,2 +1,2 @@
 # Site_Irlanda
-This webiste was developed using only HTML and CSS  and a basic JavaScript (JQuery importeed for slidebox and adapted for my banner animation)
+This webiste was developed using HTML, CSS and a little of JavaScript (JQuery imported for slidebox functionality and adapted for my personalized banner animation)
